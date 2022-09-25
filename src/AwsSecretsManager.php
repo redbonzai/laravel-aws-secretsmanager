@@ -147,7 +147,7 @@ class AwsSecretsManager
     }
 
     /**
-     * @param string $secretId
+     * @param  string  $secretId
      * @return Result
      */
     public function getClientSecretValue(string $secretId): Result
@@ -158,7 +158,7 @@ class AwsSecretsManager
     }
 
     /**
-     * @param string $secretId
+     * @param  string  $secretId
      * @return Result
      */
     public function refresh(string $secretId): Result

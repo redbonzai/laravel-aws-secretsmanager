@@ -12,22 +12,22 @@ use Spatie\DataTransferObject\DataTransferObject;
 class ListSecretsDto extends DataTransferObject
 {
     /**
-     * @var array|null $Filters (Optional) Filters the list of secrets that you
+     * @var array|null (Optional) Filters the list of secrets that you
      */
     public ?array $Filters;
 
     /**
-     * @var int|null $MaxResults The maximum number of results to list in the response.
+     * @var int|null The maximum number of results to list in the response.
      */
     public ?int $MaxResults = 100;
 
     /**
-     * @var string|null $NextToken Pagination token that's included if more results are available.
+     * @var string|null Pagination token that's included if more results are available.
      */
     public ?string $NextToken;
 
     /**
-     * @var string|null $SortOrder The order in which to sort the results. Valid values are Ascending and Descending.
+     * @var string|null The order in which to sort the results. Valid values are Ascending and Descending.
      */
     public ?string $SortOrder;
 }

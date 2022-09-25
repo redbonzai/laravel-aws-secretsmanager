@@ -20,7 +20,7 @@ return [
     | Cache Prefix
     |--------------------------------------------------------------------------
     */
-    'prefix' => env('SECRETS_MANAGER_CACHE_PREFIX', config('cache.prefix') . 'secretsmanager_'),
+    'prefix' => env('SECRETS_MANAGER_CACHE_PREFIX', config('cache.prefix').'secretsmanager_'),
 
     /*
     |--------------------------------------------------------------------------

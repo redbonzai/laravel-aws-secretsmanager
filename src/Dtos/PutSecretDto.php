@@ -15,17 +15,17 @@ use Spatie\DataTransferObject\DataTransferObject;
 class PutSecretDto extends DataTransferObject
 {
     /**
-     * @var string|null $ClientRequestToken (Optional) Specifies a unique identifier for the new version of the secret.
+     * @var string|null (Optional) Specifies a unique identifier for the new version of the secret.
      */
     public ?string $ClientRequestToken;
 
     /**
-     * @var string|\Psr\Http\Message\StreamInterface $SecretBinary (Optional) Specifies binary data that you want to encrypt and store in the new version of the secret. To use this parameter in the command-line tools, we recommend that you store your binary data in a file and then use the appropriate technique for your tool to pass the contents of the file as a parameter. Either SecretBinary or SecretString must have a value, but not both. They cannot both be empty.
+     * @var string|\Psr\Http\Message\StreamInterface (Optional) Specifies binary data that you want to encrypt and store in the new version of the secret. To use this parameter in the command-line tools, we recommend that you store your binary data in a file and then use the appropriate technique for your tool to pass the contents of the file as a parameter. Either SecretBinary or SecretString must have a value, but not both. They cannot both be empty.
      */
     public string|\Psr\Http\Message\StreamInterface $SecretBinary;
 
     /**
-     * @var string $SecretId (Required) Specifies the secret that you want to create or modify.
+     * @var string (Required) Specifies the secret that you want to create or modify.
      */
     public string $SecretId;
 
@@ -37,7 +37,7 @@ class PutSecretDto extends DataTransferObject
     public string|array|null $SecretString;
 
     /**
-     * @var array|null $VersionStages (Optional) Specifies a list of staging labels that are attached to this version of the secret. These staging labels are used to track the versions through the rotation process by the Lambda rotation function.
+     * @var array|null (Optional) Specifies a list of staging labels that are attached to this version of the secret. These staging labels are used to track the versions through the rotation process by the Lambda rotation function.
      */
     public ?array $VersionStages;
 }

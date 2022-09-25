@@ -14,7 +14,7 @@ use JsonException;
 class AwsSecretsManager
 {
     /**
-     * @var SecretsManagerClient $client
+     * @var SecretsManagerClient
      */
     protected SecretsManagerClient $client;
 
@@ -42,7 +42,7 @@ class AwsSecretsManager
     }
 
     /**
-     * @param CreateSecretDto $createSecretDto
+     * @param  CreateSecretDto  $createSecretDto
      * @return Result
      */
     public function createSecret(CreateSecretDto $createSecretDto): Result
@@ -55,7 +55,7 @@ class AwsSecretsManager
     }
 
     /**
-     * @param string $secretId
+     * @param  string  $secretId
      * @return Result
      */
     public function describeSecret(string $secretId): Result
@@ -66,7 +66,7 @@ class AwsSecretsManager
     }
 
     /**
-     * @param PutSecretDto $putSecretDto
+     * @param  PutSecretDto  $putSecretDto
      * @return Result
      */
     public function putSecretValue(PutSecretDto $putSecretDto): Result
@@ -79,7 +79,7 @@ class AwsSecretsManager
     }
 
     /**
-     * @param RotateSecretDto $rotateSecretDto
+     * @param  RotateSecretDto  $rotateSecretDto
      * @return Result
      */
     public function rotateSecret(RotateSecretDto $rotateSecretDto): Result
@@ -88,7 +88,7 @@ class AwsSecretsManager
     }
 
     /**
-     * @param string $secretId
+     * @param  string  $secretId
      * @return Result
      */
     public function deleteSecret(string $secretId): Result
@@ -103,7 +103,7 @@ class AwsSecretsManager
     }
 
     /**
-     * @param array $filters
+     * @param  array  $filters
      * @return Result
      */
     public function listSecrets(array $filters = ['MaxResults' => 100]): Result
@@ -117,7 +117,7 @@ class AwsSecretsManager
     }
 
     /**
-     * @param string $secretId
+     * @param  string  $secretId
      * @return Result
      */
     public function getSecret(string $secretId): Result
@@ -136,8 +136,9 @@ class AwsSecretsManager
     }
 
     /**
-     * @param string $secretId
+     * @param  string  $secretId
      * @return array
+     *
      * @throws JsonException
      * @throws Exception
      */
@@ -147,8 +148,9 @@ class AwsSecretsManager
     }
 
     /**
-     * @param Result $result
+     * @param  Result  $result
      * @return array
+     *
      * @throws JsonException
      */
     protected function getSecretToArray(Result $result): array
@@ -166,7 +168,7 @@ class AwsSecretsManager
     }
 
     /**
-     * @param Result $result
+     * @param  Result  $result
      * @return void
      */
     protected function putCache(Result $result): void
@@ -175,7 +177,7 @@ class AwsSecretsManager
     }
 
     /**
-     * @param string $secretId
+     * @param  string  $secretId
      * @return bool
      */
     public function forgetCache(string $secretId): bool

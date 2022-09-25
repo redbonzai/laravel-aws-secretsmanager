@@ -104,7 +104,7 @@ class AwsSecretsManager
     }
 
     /**
-     * @param  ListSecretsDto|null $listSecretsDto
+     * @param  ListSecretsDto|null  $listSecretsDto
      * @return Result
      */
     public function listSecrets(ListSecretsDto $listSecretsDto = null): Result

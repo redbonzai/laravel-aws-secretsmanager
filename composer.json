@@ -1,0 +1,57 @@
+{
+    "name": "getsolaris/laravel-aws-secretsmanager",
+    "description": "A Laravel package to retrieve key management from AWS Secrets Manager",
+    "keywords": [
+        "getsolaris",
+        "laravel",
+        "aws",
+        "aws-secretsmanager"
+    ],
+    "homepage": "https://github.com/getsolaris/laravel-aws-secretsmanager",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "getsolaris",
+            "email": "im@getsolaris.kr"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/getsolaris/laravel-aws-secretsmanager/issues",
+        "source": "https://github.com/getsolaris/laravel-aws-secretsmanager"
+    },
+    "require": {
+        "php": "^8.0",
+        "ext-json": "*",
+        "illuminate/support": "^6.0 || ^7.0 || ^8.0 || ^9.0",
+        "aws/aws-sdk-php": "^3.0",
+        "spatie/data-transfer-object": "^3.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Getsolaris\\LaravelAwsSecretsManager\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Getsolaris\\LaravelAwsSecretsManager\\Tests\\": "tests"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Getsolaris\\LaravelAwsSecretsManager\\AwsSecretsManagerServiceProvider"
+            ],
+            "aliases": {
+                "AwsSecretsManager": "Getsolaris\\LaravelAwsSecretsManager\\AwsSecretsManager"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

@@ -12,17 +12,17 @@ use Spatie\DataTransferObject\DataTransferObject;
 class DeleteSecretDto extends DataTransferObject
 {
     /**
-     * @var bool|null $ForceDeleteWithoutRecovery (Optional) Specifies that the secret is to be deleted without any recovery window. You cannot use both this parameter and the RecoveryWindowInDays parameter in the same API call.
+     * @var bool|null (Optional) Specifies that the secret is to be deleted without any recovery window. You cannot use both this parameter and the RecoveryWindowInDays parameter in the same API call.
      */
     public ?bool $ForceDeleteWithoutRecovery;
 
     /**
-     * @var int|null $RecoveryWindowInDays (Optional) Specifies the number of days that Secrets Manager waits before it can delete the secret. You can't use both this parameter and the ForceDeleteWithoutRecovery parameter in the same API call. This value can range from 7 to 30 days. The default value is 30.
+     * @var int|null (Optional) Specifies the number of days that Secrets Manager waits before it can delete the secret. You can't use both this parameter and the ForceDeleteWithoutRecovery parameter in the same API call. This value can range from 7 to 30 days. The default value is 30.
      */
     public ?int $RecoveryWindowInDays;
 
     /**
-     * @var string $SecretId (Required) Specifies the secret that you want to delete. You can specify either the Amazon Resource Name (ARN) or the friendly name of the secret.
+     * @var string (Required) Specifies the secret that you want to delete. You can specify either the Amazon Resource Name (ARN) or the friendly name of the secret.
      */
     public string $SecretId;
 }

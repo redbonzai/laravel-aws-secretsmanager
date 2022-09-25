@@ -7,7 +7,7 @@ use Illuminate\Support\ServiceProvider;
 class AwsSecretsManagerServiceProvider extends ServiceProvider
 {
     /**
-     * @var string $name
+     * @var string
      */
     private string $name = 'aws-secretsmanager';
 
@@ -16,7 +16,7 @@ class AwsSecretsManagerServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__ . "/../config/{$this->name}.php", $this->name);
+        $this->mergeConfigFrom(__DIR__."/../config/{$this->name}.php", $this->name);
 
         $this->app->singleton(AwsSecretsManager::class, function () {
             return new AwsSecretsManager();
@@ -29,7 +29,7 @@ class AwsSecretsManagerServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->publishes([
-            __DIR__ . "/../config/{$this->name}.php" => config_path($this->name . '.php'),
+            __DIR__."/../config/{$this->name}.php" => config_path($this->name.'.php'),
         ], 'config');
     }
 }

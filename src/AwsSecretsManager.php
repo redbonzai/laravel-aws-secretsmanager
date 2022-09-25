@@ -127,9 +127,7 @@ class AwsSecretsManager
             return $this->getSecretCache($secretId);
         }
 
-        $result = $this->connection()->client->getSecretValue([
-            'SecretId' => $secretId,
-        ]);
+        $result = $this->getClientSecretValue($secretId);
 
         $this->putCache($result);
 
@@ -146,6 +144,30 @@ class AwsSecretsManager
     public function getSecretValue(string $secretId): array
     {
         return $this->getSecretToArray($this->getSecret($secretId));
+    }
+
+    /**
+     * @param string $secretId
+     * @return Result
+     */
+    public function getClientSecretValue(string $secretId): Result
+    {
+        return $this->connection()->client->getSecretValue([
+            'SecretId' => $secretId,
+        ]);
+    }
+
+    /**
+     * @param string $secretId
+     * @return Result
+     */
+    public function refresh(string $secretId): Result
+    {
+        $result = $this->getClientSecretValue($secretId);
+
+        $this->putCache($result);
+
+        return $result;
     }
 
     /**

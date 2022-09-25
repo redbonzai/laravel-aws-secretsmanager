@@ -104,17 +104,16 @@ class AwsSecretsManager
     }
 
     /**
-     * @param  ListSecretsDto  $listSecretsDto
+     * @param  ListSecretsDto|null $listSecretsDto
      * @return Result
      */
-    public function listSecrets(ListSecretsDto $listSecretsDto): Result
+    public function listSecrets(ListSecretsDto $listSecretsDto = null): Result
     {
-        $secrets = $this->connection()->client->listSecrets($listSecretsDto->toArray());
-        foreach ($secrets['SecretList'] as $secret) {
-            $this->putCache($secret);
+        if (! $listSecretsDto instanceof ListSecretsDto) {
+            $listSecretsDto = new ListSecretsDto();
         }
 
-        return $secrets;
+        return $this->connection()->client->listSecrets($listSecretsDto->toArray());
     }
 
     /**

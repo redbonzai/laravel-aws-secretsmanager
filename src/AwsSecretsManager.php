@@ -6,6 +6,7 @@ use Aws\Result;
 use Aws\SecretsManager\SecretsManagerClient;
 use Exception;
 use Getsolaris\LaravelAwsSecretsManager\Dtos\CreateSecretDto;
+use Getsolaris\LaravelAwsSecretsManager\Dtos\ListSecretsDto;
 use Getsolaris\LaravelAwsSecretsManager\Dtos\PutSecretDto;
 use Getsolaris\LaravelAwsSecretsManager\Dtos\RotateSecretDto;
 use Illuminate\Support\Facades\Cache;
@@ -14,7 +15,7 @@ use JsonException;
 class AwsSecretsManager
 {
     /**
-     * @var SecretsManagerClient
+     * @var SecretsManagerClient $client
      */
     protected SecretsManagerClient $client;
 
@@ -42,7 +43,7 @@ class AwsSecretsManager
     }
 
     /**
-     * @param  CreateSecretDto  $createSecretDto
+     * @param CreateSecretDto $createSecretDto
      * @return Result
      */
     public function createSecret(CreateSecretDto $createSecretDto): Result
@@ -55,7 +56,7 @@ class AwsSecretsManager
     }
 
     /**
-     * @param  string  $secretId
+     * @param string $secretId
      * @return Result
      */
     public function describeSecret(string $secretId): Result
@@ -66,7 +67,7 @@ class AwsSecretsManager
     }
 
     /**
-     * @param  PutSecretDto  $putSecretDto
+     * @param PutSecretDto $putSecretDto
      * @return Result
      */
     public function putSecretValue(PutSecretDto $putSecretDto): Result
@@ -79,7 +80,7 @@ class AwsSecretsManager
     }
 
     /**
-     * @param  RotateSecretDto  $rotateSecretDto
+     * @param RotateSecretDto $rotateSecretDto
      * @return Result
      */
     public function rotateSecret(RotateSecretDto $rotateSecretDto): Result
@@ -88,7 +89,7 @@ class AwsSecretsManager
     }
 
     /**
-     * @param  string  $secretId
+     * @param string $secretId
      * @return Result
      */
     public function deleteSecret(string $secretId): Result
@@ -103,12 +104,12 @@ class AwsSecretsManager
     }
 
     /**
-     * @param  array  $filters
+     * @param ListSecretsDto $listSecretsDto
      * @return Result
      */
-    public function listSecrets(array $filters = ['MaxResults' => 100]): Result
+    public function listSecrets(ListSecretsDto $listSecretsDto): Result
     {
-        $secrets = $this->connection()->client->listSecrets($filters);
+        $secrets = $this->connection()->client->listSecrets($listSecretsDto->toArray());
         foreach ($secrets['SecretList'] as $secret) {
             $this->putCache($secret);
         }
@@ -117,7 +118,7 @@ class AwsSecretsManager
     }
 
     /**
-     * @param  string  $secretId
+     * @param string $secretId
      * @return Result
      */
     public function getSecret(string $secretId): Result
@@ -136,9 +137,8 @@ class AwsSecretsManager
     }
 
     /**
-     * @param  string  $secretId
+     * @param string $secretId
      * @return array
-     *
      * @throws JsonException
      * @throws Exception
      */
@@ -148,9 +148,8 @@ class AwsSecretsManager
     }
 
     /**
-     * @param  Result  $result
+     * @param Result $result
      * @return array
-     *
      * @throws JsonException
      */
     protected function getSecretToArray(Result $result): array
@@ -168,7 +167,7 @@ class AwsSecretsManager
     }
 
     /**
-     * @param  Result  $result
+     * @param Result $result
      * @return void
      */
     protected function putCache(Result $result): void
@@ -177,7 +176,7 @@ class AwsSecretsManager
     }
 
     /**
-     * @param  string  $secretId
+     * @param string $secretId
      * @return bool
      */
     public function forgetCache(string $secretId): bool

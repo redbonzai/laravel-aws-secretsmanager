@@ -3,13 +3,12 @@
 namespace Getsolaris\LaravelAwsSecretsManager\Dtos;
 
 use Spatie\DataTransferObject\Attributes\Strict;
-use Spatie\DataTransferObject\DataTransferObject;
 
 /**
  * @see https://docs.aws.amazon.com/aws-sdk-php/v3/api/api-secretsmanager-2017-10-17.html#rotatesecret
  */
 #[Strict]
-class RotateSecretDto extends DataTransferObject
+class RotateSecretDto extends BaseDto
 {
     /**
      * @var string|null (Optional) Specifies a unique identifier for the new version of the secret.

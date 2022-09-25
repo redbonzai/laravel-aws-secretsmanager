@@ -6,13 +6,12 @@ use Getsolaris\LaravelAwsSecretsManager\Casters\ArrayToJsonCaster;
 use Getsolaris\LaravelAwsSecretsManager\Validators\JsonValidator;
 use Spatie\DataTransferObject\Attributes\CastWith;
 use Spatie\DataTransferObject\Attributes\Strict;
-use Spatie\DataTransferObject\DataTransferObject;
 
 /**
  * @see https://docs.aws.amazon.com/aws-sdk-php/v3/api/api-secretsmanager-2017-10-17.html#createsecret
  */
 #[Strict]
-class CreateSecretDto extends DataTransferObject
+class CreateSecretDto extends BaseDto
 {
     /**
      * @var array|null (Optional) Specifies a list of Regions where you want to replicate the secret. You can't replicate a secret to the same Region where it's created. If you omit this parameter, then Secrets Manager automatically replicates the secret to all Regions that are enabled for replication.

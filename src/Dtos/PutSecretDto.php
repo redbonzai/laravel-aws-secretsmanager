@@ -6,13 +6,12 @@ use Getsolaris\LaravelAwsSecretsManager\Casters\ArrayToJsonCaster;
 use Getsolaris\LaravelAwsSecretsManager\Validators\JsonValidator;
 use Spatie\DataTransferObject\Attributes\CastWith;
 use Spatie\DataTransferObject\Attributes\Strict;
-use Spatie\DataTransferObject\DataTransferObject;
 
 /**
  * @see https://docs.aws.amazon.com/aws-sdk-php/v3/api/api-secretsmanager-2017-10-17.html#putsecretvalue
  */
 #[Strict]
-class PutSecretDto extends DataTransferObject
+class PutSecretDto extends BaseDto
 {
     /**
      * @var string|null (Optional) Specifies a unique identifier for the new version of the secret.

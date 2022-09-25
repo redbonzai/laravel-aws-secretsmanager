@@ -3,13 +3,12 @@
 namespace Getsolaris\LaravelAwsSecretsManager\Dtos;
 
 use Spatie\DataTransferObject\Attributes\Strict;
-use Spatie\DataTransferObject\DataTransferObject;
 
 /**
  * @see https://docs.aws.amazon.com/aws-sdk-php/v3/api/api-secretsmanager-2017-10-17.html#deletesecret
  */
 #[Strict]
-class DeleteSecretDto extends DataTransferObject
+class DeleteSecretDto extends BaseDto
 {
     /**
      * @var bool|null (Optional) Specifies that the secret is to be deleted without any recovery window. You cannot use both this parameter and the RecoveryWindowInDays parameter in the same API call.

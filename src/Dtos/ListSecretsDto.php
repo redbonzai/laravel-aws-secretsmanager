@@ -3,13 +3,12 @@
 namespace Getsolaris\LaravelAwsSecretsManager\Dtos;
 
 use Spatie\DataTransferObject\Attributes\Strict;
-use Spatie\DataTransferObject\DataTransferObject;
 
 /**
  * @see https://docs.aws.amazon.com/aws-sdk-php/v3/api/api-secretsmanager-2017-10-17.html#listsecrets
  */
 #[Strict]
-class ListSecretsDto extends DataTransferObject
+class ListSecretsDto extends BaseDto
 {
     /**
      * @var array|null (Optional) Filters the list of secrets that you
